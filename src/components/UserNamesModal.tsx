@@ -6,6 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import React from "react";
 import backgroundImg from "../assets/Background.png";
+import { usePlayerNamesContext } from "../context/PlayerContext";
 import { Player1Icon } from "./Player1Icon";
 import { Player2Icon } from "./Player2Icon";
 
@@ -22,14 +23,15 @@ const BootstrapDialog = styled(Dialog)(() => ({
   },
   "& .MuiInputBase-root": {
     backgroundColor: "white",
-    "&:focus": {
-      backgroundColor: "white",
-    },
+  },
+  "& .Mui-focused": {
+    backgroundColor: "white",
   },
 }));
 
 export default function UserNamesDialog() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
+  const { playerNames, setPlayerNames } = usePlayerNamesContext();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -38,6 +40,16 @@ export default function UserNamesDialog() {
     setOpen(false);
   };
 
+  const handlePlayButtonClick = (event: any) => {
+    event.preventDefault();
+    setOpen(false);
+    setPlayerNames({
+      player1: playerNames.player1,
+      player2: playerNames.player2,
+    });
+  };
+
+  console.log(playerNames);
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -83,18 +95,6 @@ export default function UserNamesDialog() {
         >
           Exit Game
         </Button>
-        {/* <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={{
-            position: "absolute",
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton> */}
         <DialogContent
           sx={{
             display: "flex",
@@ -130,11 +130,15 @@ export default function UserNamesDialog() {
             >
               <Player1Icon />
               <TextField
-                id="outlined-basic"
+                id="player1Name"
+                name="player1Name"
                 label="Name of Player 1"
                 variant="filled"
                 sx={{ marginTop: 5 }}
                 size="small"
+                onChange={(e) =>
+                  setPlayerNames({ ...playerNames, player1: e.target.value })
+                }
                 fullWidth
               />
             </Stack>
@@ -147,11 +151,17 @@ export default function UserNamesDialog() {
             >
               <Player2Icon />
               <TextField
-                id="outlined-basic"
+                id="player2Name"
+                name="player2Name"
                 label="Name of Player 2"
                 variant="filled"
                 sx={{ marginTop: 5 }}
                 size="small"
+                onChange={(e) => {
+                  setTimeout(() => {
+                    setPlayerNames({ ...playerNames, player2: e.target.value });
+                  }, 2000);
+                }}
                 fullWidth
               />
             </Stack>
@@ -171,7 +181,7 @@ export default function UserNamesDialog() {
               },
             }}
             variant="contained"
-            onClick={handleClose}
+            onClick={handlePlayButtonClick}
           >
             Let's Play
           </Button>

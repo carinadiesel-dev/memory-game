@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
-import CloseIcon from "@mui/icons-material/Close";
-import { Box, IconButton, Stack, TextField, Typography } from "@mui/material";
+import { Box, Stack, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import React from "react";
@@ -18,6 +16,13 @@ const BootstrapDialog = styled(Dialog)(() => ({
     backgroundImage: `url(${backgroundImg})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
+    padding: 8,
+  },
+  "& .MuiInputBase-root": {
+    backgroundColor: "white",
+    "&:focus": {
+      backgroundColor: "white",
+    },
   },
 }));
 
@@ -40,6 +45,7 @@ export default function UserNamesDialog() {
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        fullScreen
       >
         <DialogTitle
           sx={{
@@ -54,7 +60,28 @@ export default function UserNamesDialog() {
         >
           Memory
         </DialogTitle>
-        <IconButton
+        <Button
+          sx={{
+            position: "absolute",
+            right: 50,
+            top: 20,
+            backgroundColor: "#D4190C",
+            fontFamily: "Poppins",
+            color: "white",
+            textTransform: "none",
+            fontWeight: 800,
+            fontSize: "28px",
+            paddingX: 2,
+            "&:hover": {
+              backgroundColor: "#7c1008",
+            },
+          }}
+          variant="contained"
+          onClick={handleClose}
+        >
+          Exit Game
+        </Button>
+        {/* <IconButton
           aria-label="close"
           onClick={handleClose}
           sx={{
@@ -65,8 +92,15 @@ export default function UserNamesDialog() {
           }}
         >
           <CloseIcon />
-        </IconButton>
-        <DialogContent>
+        </IconButton> */}
+        <DialogContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
           <Typography
             sx={{
               fontWeight: 700,
@@ -82,10 +116,16 @@ export default function UserNamesDialog() {
               display: "flex",
               alignItems: "end",
               justifyContent: "center",
-              gap: 5,
+              gap: 10,
             }}
           >
-            <Stack sx={{ justifyContent: "center", alignItems: "center" }}>
+            <Stack
+              sx={{
+                width: "20rem",
+                justifyContent: "around",
+                alignItems: "center",
+              }}
+            >
               <svg
                 width="180"
                 height="222"
@@ -716,12 +756,19 @@ export default function UserNamesDialog() {
               <TextField
                 id="outlined-basic"
                 label="Name of Player 1"
-                variant="outlined"
-                sx={{ marginTop: 2 }}
+                variant="filled"
+                sx={{ marginTop: 5 }}
+                size="small"
                 fullWidth
               />
             </Stack>
-            <Stack sx={{ justifyContent: "center", alignItems: "center" }}>
+            <Stack
+              sx={{
+                width: "20rem",
+                justifyContent: "around",
+                alignItems: "center",
+              }}
+            >
               <svg
                 width="177"
                 height="183"
@@ -1333,15 +1380,14 @@ export default function UserNamesDialog() {
 
               <TextField
                 id="outlined-basic"
-                label="Name of Player 1"
-                variant="outlined"
-                sx={{ marginTop: 2 }}
+                label="Name of Player 2"
+                variant="filled"
+                sx={{ marginTop: 5 }}
+                size="small"
                 fullWidth
               />
             </Stack>
           </Box>
-        </DialogContent>
-        <DialogActions>
           <Button
             sx={{
               backgroundColor: "#0AB169",
@@ -1352,13 +1398,16 @@ export default function UserNamesDialog() {
               fontSize: "28px",
               paddingX: 8,
               marginy: 10,
+              "&:hover": {
+                backgroundColor: "#2e7d32",
+              },
             }}
             variant="contained"
             onClick={handleClose}
           >
             Let's Play
           </Button>
-        </DialogActions>
+        </DialogContent>
       </BootstrapDialog>
     </React.Fragment>
   );

@@ -18,6 +18,11 @@ type PlayersDataContext = {
   >;
 };
 
+// ContextProps = {
+//   playersData: {player1:PLayerDataType, player2: PlayerDataType},
+//   setPlayersData: (data:PlayerDataType) => void;
+//   }
+
 export const PlayersDataContext = createContext<PlayersDataContext | null>(
   null
 );
@@ -45,7 +50,7 @@ export const usePlayersDataContext = () => {
   const context = useContext(PlayersDataContext);
   if (context === null) {
     throw new Error(
-      "usePlayersDataContext must be used within the usePlayerNamesContextProvider"
+      "usePlayersDataContext must be used within the usePlayersDataContextProvider"
     );
   }
   return context;

@@ -15,6 +15,7 @@ export const CardGrid = () => {
         backgroundImage:
           "linear-gradient(132.61deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 100%);",
         borderWidth: "1px",
+        borderRadius: 2,
       }}
       alignItems={"center"}
       justifyContent={"center"}

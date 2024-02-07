@@ -26,36 +26,36 @@ import JackDiamonds from "../assets/cards/diamond-j.svg";
 import KingDiamonds from "../assets/cards/diamond-k.svg";
 import QueenDiamonds from "../assets/cards/diamond-q.svg";
 
+import TenSpades from "../assets/cards/spade-10.svg";
+import TwoSpades from "../assets/cards/spade-2.svg";
+import ThreeSpades from "../assets/cards/spade-3.svg";
+import FourSpades from "../assets/cards/spade-4.svg";
+import FiveSpades from "../assets/cards/spade-5.svg";
+import SixSpades from "../assets/cards/spade-6.svg";
+import SevenSpades from "../assets/cards/spade-7.svg";
+import EightSpades from "../assets/cards/spade-8.svg";
+import NineSpades from "../assets/cards/spade-9.svg";
+import AceSpades from "../assets/cards/spade-a.svg";
+import JackSpades from "../assets/cards/spade-j.svg";
 import KingSpades from "../assets/cards/spade-k.svg";
 import QueenSpades from "../assets/cards/spade-q.svg";
-import JackSpades from "../assets/cards/spade-j.svg";
-import TenSpades from "../assets/cards/spade-10.svg";
-import NineSpades from "../assets/cards/spade-9.svg";
-import EightSpades from "../assets/cards/spade-8.svg";
-import SevenSpades from "../assets/cards/spade-7.svg";
-import SixSpades from "../assets/cards/spade-6.svg";
-import FiveSpades from "../assets/cards/spade-5.svg";
-import FourSpades from "../assets/cards/spade-4.svg";
-import ThreeSpades from "../assets/cards/spade-3.svg";
-import TwoSpades from "../assets/cards/spade-2.svg";
-import AceSpades from "../assets/cards/spade-a.svg";
 
+import TenClubs from "../assets/cards/club-10.svg";
+import TwoClubs from "../assets/cards/club-2.svg";
+import ThreeClubs from "../assets/cards/club-3.svg";
+import FourClubs from "../assets/cards/club-4.svg";
+import FiveClubs from "../assets/cards/club-5.svg";
+import SixClubs from "../assets/cards/club-6.svg";
+import SevenClubs from "../assets/cards/club-7.svg";
+import EightClubs from "../assets/cards/club-8.svg";
+import NineClubs from "../assets/cards/club-9.svg";
+import AceClubs from "../assets/cards/club-a.svg";
+import JackClubs from "../assets/cards/club-j.svg";
 import KingClubs from "../assets/cards/club-k.svg";
 import QueenClubs from "../assets/cards/club-q.svg";
-import JackClubs from "../assets/cards/club-j.svg";
-import TenClubs from "../assets/cards/club-10.svg";
-import NineClubs from "../assets/cards/club-9.svg";
-import EightClubs from "../assets/cards/club-8.svg";
-import SevenClubs from "../assets/cards/club-7.svg";
-import SixClubs from "../assets/cards/club-6.svg";
-import FiveClubs from "../assets/cards/club-5.svg";
-import FourClubs from "../assets/cards/club-4.svg";
-import ThreeClubs from "../assets/cards/club-3.svg";
-import TwoClubs from "../assets/cards/club-2.svg";
-import AceClubs from "../assets/cards/club-a.svg";
 
-import RedJoker from "../assets/cards/joker_red.svg";
-import BlackJoker from "../assets/cards/joker_black.svg";
+import BlackJoker from "../assets/cards/joker-black.svg";
+import RedJoker from "../assets/cards/joker-red.svg";
 
 const HEARTS = [
   {

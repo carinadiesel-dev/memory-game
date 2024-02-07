@@ -4,12 +4,12 @@ import backgroundImage from "./assets/Background.png";
 import { CardGrid } from "./components/CardGrid";
 import { ScoreCard } from "./components/ScoreCard";
 import UserNamesModal from "./components/UserNamesModal";
-import { PlayerNamesProvider } from "./context/PlayerContext";
+import { PlayersDataProvider } from "./context/PlayerContext";
 
 function App() {
   return (
     <>
-      <PlayerNamesProvider>
+      <PlayersDataProvider>
         <Box
           sx={{
             display: "flex",
@@ -25,7 +25,7 @@ function App() {
           <CardGrid />
           {/* <CardFrame cardImg={CardBackImg} /> */}
         </Box>
-      </PlayerNamesProvider>
+      </PlayersDataProvider>
     </>
   );
 }

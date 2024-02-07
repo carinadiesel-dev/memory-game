@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { usePlayerNamesContext } from "../context/PlayerContext";
+import { usePlayersDataContext } from "../context/PlayerContext";
 import { Player1Icon } from "./Player1Icon";
 import { Player2Icon } from "./Player2Icon";
 
@@ -9,10 +9,11 @@ type ScoreCardProps = {
 
 export const ScoreCard = ({ playerNumber }: ScoreCardProps) => {
   const playerIcon = playerNumber === 1 ? <Player1Icon /> : <Player2Icon />;
-  const { playerNames } = usePlayerNamesContext();
-  const player1Name = playerNames.player1;
-  const player2Name = playerNames.player2;
-  console.log(playerNames);
+  const { playersData } = usePlayersDataContext();
+  const player1Name = playersData.player1.name;
+  const player2Name = playersData.player2.name;
+  const player1Score = playersData.player1.score;
+  const player2Score = playersData.player2.score;
   return (
     <Box
       sx={{
@@ -39,7 +40,7 @@ export const ScoreCard = ({ playerNumber }: ScoreCardProps) => {
             color: "white",
           }}
         >
-          Score : 0
+          Score : {playerNumber === 1 ? player1Score : player2Score}
         </Typography>
       </Box>
     </Box>

@@ -1,38 +1,51 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 
-type PlayerName = {
-  player1: string;
-  player2: string;
+type PlayerDataType = {
+  name: string;
+  score: number;
 };
 
-type PlayerNamesContext = {
-  playerNames: PlayerName;
-  setPlayerNames: (playerNames: PlayerName) => void;
+type PlayersDataContext = {
+  playersData: {
+    player1: PlayerDataType;
+    player2: PlayerDataType;
+  };
+  setPlayersData: React.Dispatch<
+    React.SetStateAction<{
+      player1: PlayerDataType;
+      player2: PlayerDataType;
+    }>
+  >;
 };
 
-export const PlayerNamesContext = createContext<PlayerNamesContext | null>(
+export const PlayersDataContext = createContext<PlayersDataContext | null>(
   null
 );
 
-interface PlayerNamesProviderProps {
+interface PlayersDataProviderProps {
   children: ReactNode;
 }
 
-export function PlayerNamesProvider({ children }: PlayerNamesProviderProps) {
-  const [playerNames, setPlayerNames] = useState({ player1: "", player2: "" });
+export function PlayersDataProvider({ children }: PlayersDataProviderProps) {
+  const [playersData, setPlayersData] = useState({
+    player1: { name: "", score: 0 },
+    player2: { name: "", score: 0 },
+  });
+
+  const value = { playersData, setPlayersData };
 
   return (
-    <PlayerNamesContext.Provider value={{ playerNames, setPlayerNames }}>
+    <PlayersDataContext.Provider value={value}>
       {children}
-    </PlayerNamesContext.Provider>
+    </PlayersDataContext.Provider>
   );
 }
 
-export const usePlayerNamesContext = () => {
-  const context = useContext(PlayerNamesContext);
+export const usePlayersDataContext = () => {
+  const context = useContext(PlayersDataContext);
   if (context === null) {
     throw new Error(
-      "usePlayerNamesContext must be used within the usePlayerNamesContextProvider"
+      "usePlayersDataContext must be used within the usePlayerNamesContextProvider"
     );
   }
   return context;

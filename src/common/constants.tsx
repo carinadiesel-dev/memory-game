@@ -57,7 +57,7 @@ import QueenClubs from "../assets/cards/club-q.svg";
 import BlackJoker from "../assets/cards/joker-black.svg";
 import RedJoker from "../assets/cards/joker-red.svg";
 
-const HEARTS = [
+export const CARDS = [
   {
     id: "king-hearts",
     value: "King",
@@ -136,9 +136,6 @@ const HEARTS = [
     suit: "Hearts",
     image: <AceHearts />,
   },
-];
-
-const DIAMONDS = [
   {
     id: "king-diamonds",
     value: "King",
@@ -217,9 +214,6 @@ const DIAMONDS = [
     suit: "Diamonds",
     image: <AceDiamonds />,
   },
-];
-
-const SPADES = [
   {
     id: "king-spades",
     value: "King",
@@ -298,9 +292,6 @@ const SPADES = [
     suit: "Spades",
     image: <AceSpades />,
   },
-];
-
-const CLUBS = [
   {
     id: "king-clubs",
     value: "King",
@@ -379,9 +370,6 @@ const CLUBS = [
     suit: "Clubs",
     image: <AceClubs />,
   },
-];
-
-const JOKERS = [
   {
     id: "joker-red",
     value: "Joker",
@@ -396,4 +384,13 @@ const JOKERS = [
   },
 ];
 
-export const CARDS = [...HEARTS, ...DIAMONDS, ...SPADES, ...CLUBS, ...JOKERS];
+// Fisher-Yates Shuffle algorithm
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+export const SHUFFLEDCARDS = shuffleArray(CARDS);

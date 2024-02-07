@@ -6,7 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import React from "react";
 import backgroundImg from "../assets/Background.png";
-import { usePlayerNamesContext } from "../context/PlayerContext";
+import { usePlayersDataContext } from "../context/PlayerContext";
 import { Player1Icon } from "./Player1Icon";
 import { Player2Icon } from "./Player2Icon";
 
@@ -31,7 +31,7 @@ const BootstrapDialog = styled(Dialog)(() => ({
 
 export default function UserNamesDialog() {
   const [open, setOpen] = React.useState(true);
-  const { playerNames, setPlayerNames } = usePlayerNamesContext();
+  const { playersData, setPlayersData } = usePlayersDataContext();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -43,18 +43,14 @@ export default function UserNamesDialog() {
   const handlePlayButtonClick = (event: any) => {
     event.preventDefault();
     setOpen(false);
-    setPlayerNames({
-      player1: playerNames.player1,
-      player2: playerNames.player2,
-    });
   };
 
-  console.log(playerNames);
+  console.log(playersData);
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
         Open dialog
-      </Button>
+      </Button> */}
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -137,7 +133,13 @@ export default function UserNamesDialog() {
                 sx={{ marginTop: 5 }}
                 size="small"
                 onChange={(e) =>
-                  setPlayerNames({ ...playerNames, player1: e.target.value })
+                  setPlayersData((prevState) => ({
+                    ...prevState,
+                    player1: {
+                      ...prevState.player1,
+                      name: e.target.value,
+                    },
+                  }))
                 }
                 fullWidth
               />
@@ -159,7 +161,13 @@ export default function UserNamesDialog() {
                 size="small"
                 onChange={(e) => {
                   setTimeout(() => {
-                    setPlayerNames({ ...playerNames, player2: e.target.value });
+                    setPlayersData((prevState) => ({
+                      ...prevState,
+                      player2: {
+                        ...prevState.player2,
+                        name: e.target.value,
+                      },
+                    }));
                   }, 2000);
                 }}
                 fullWidth

@@ -52,9 +52,9 @@ export default function UserNamesDialog() {
   console.log(playerNames);
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
         Open dialog
-      </Button>
+      </Button> */}
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

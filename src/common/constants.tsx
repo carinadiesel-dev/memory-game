@@ -62,7 +62,7 @@ export const CARDS = [
     id: "king-hearts",
     value: "King",
     suit: "Hearts",
-    image: <KingHearts />,
+    image: KingHearts,
   },
   {
     id: "queen-hearts",

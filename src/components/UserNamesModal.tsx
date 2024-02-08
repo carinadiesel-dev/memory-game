@@ -44,8 +44,6 @@ export default function UserNamesDialog() {
     event.preventDefault();
     setOpen(false);
   };
-
-  console.log(playersData);
   return (
     <React.Fragment>
       {/* <Button variant="outlined" onClick={handleClickOpen}>

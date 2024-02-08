@@ -1,33 +1,10 @@
-import { Box, Grid } from "@mui/material";
-import { FunctionComponent } from "react";
-import CardBackImg from "../assets/cards/card-back.png";
+import { Grid } from "@mui/material";
 import { SHUFFLEDCARDS } from "../common/constants";
+import { useClickedCardsContext } from "../context/ClickedCardContext";
 import { CardFrame } from "./CardFrame";
 
-type CardProps = {
-  cardImg: any;
-  handleClick: () => void;
-};
-
-const Card: FunctionComponent<CardProps> = ({
-  cardImg,
-  handleClick,
-}: CardProps) => {
-  return (
-    <Box
-      sx={{
-        height: "7rem",
-        width: "4.5rem",
-        backgroundImage: `url(${cardImg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-      onClick={handleClick}
-    ></Box>
-  );
-};
-
 export const CardGrid = () => {
+  const { handleChoice } = useClickedCardsContext();
   return (
     <Grid
       container
@@ -44,7 +21,7 @@ export const CardGrid = () => {
       alignItems={"center"}
       justifyContent={"center"}
     >
-      {SHUFFLEDCARDS.map((shuffledCard) => (
+      {SHUFFLEDCARDS.map((shuffledCard: any) => (
         <Grid
           item
           xs={1}
@@ -53,9 +30,9 @@ export const CardGrid = () => {
           alignItems="center"
         >
           <CardFrame
-            cardImg={CardBackImg}
+            cardImg={shuffledCard.img}
             key={shuffledCard.id}
-            handleClick={() => handleCardClick(shuffledCard)}
+            handleClick={() => handleChoice(shuffledCard)}
           />
         </Grid>
       ))}

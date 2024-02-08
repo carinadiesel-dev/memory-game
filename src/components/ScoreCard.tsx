@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { usePlayersDataContext } from "../context/PlayerContext";
 import { Player1Icon } from "./Player1Icon";
 import { Player2Icon } from "./Player2Icon";

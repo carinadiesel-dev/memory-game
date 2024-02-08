@@ -53,24 +53,27 @@ export function ClickedCardsDataProvider({
 
   const [flippedCards, setFlippedCards] = useState([]);
 
-  const [disabled, setDisabled] = useState(false);
+  const switchPlayer = () => {
+    setActivePlayer(activePlayer === "Player1" ? "Player2" : "Player1");
+  };
 
   const cardCompare = () => {
     if (choice1?.value === choice2?.value) {
       if (activePlayer === "Player1") {
         playersData.player1.score = player1Score + 2;
+        // switchPlayer();
       } else if (activePlayer === "Player2") {
         playersData.player2.score = player2Score + 2;
+        // switchPlayer();
       }
     } else {
       setTimeout(() => {
         setFlippedCards([]);
       }, 1000);
     }
-
+    switchPlayer();
     setChoice1(null);
     setChoice2(null);
-    setActivePlayer(activePlayer === "Player1" ? "Player2" : "Player1");
   };
 
   const handleChoice = (card: CardData) => {

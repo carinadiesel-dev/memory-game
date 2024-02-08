@@ -1,7 +1,8 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import "./App.css";
 import backgroundImage from "./assets/Background.png";
 // import { CardClickProvider } from "./context/ClickedCardContext";
+import { ActivePlayerIndicator } from "./components/ActivePlayerIndicator";
 import { CardGrid } from "./components/CardGrid";
 import { ScoreCard } from "./components/ScoreCard";
 import UserNamesModal from "./components/UserNamesModal";
@@ -89,9 +90,16 @@ function App() {
               }}
             >
               <UserNamesModal />
-              <ScoreCard playerNumber={1} />
+              <Stack gap={2}>
+                <ScoreCard playerNumber={1} />
+                <ActivePlayerIndicator player={1} />
+              </Stack>
+
               <CardGrid />
-              <ScoreCard playerNumber={2} />
+              <Stack gap={2}>
+                <ScoreCard playerNumber={2} />
+                <ActivePlayerIndicator player={2} />
+              </Stack>
             </Box>
           </Box>
         </ClickedCardsDataProvider>

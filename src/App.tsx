@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import "./App.css";
 import backgroundImage from "./assets/Background.png";
 // import { CardClickProvider } from "./context/ClickedCardContext";
+import { useState } from "react";
 import { CardGrid } from "./components/CardGrid";
 import { ScoreCard } from "./components/ScoreCard";
 import UserNamesModal from "./components/UserNamesModal";

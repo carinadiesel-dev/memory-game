@@ -38,7 +38,6 @@ interface ClickedCardsDataProviderProps {
   children: ReactNode;
 }
 
-// A component that provides the card click context
 export function ClickedCardsDataProvider({
   children,
 }: ClickedCardsDataProviderProps) {
@@ -53,6 +52,8 @@ export function ClickedCardsDataProvider({
   const [activePlayer, setActivePlayer] = useState("Player1");
 
   const [flippedCards, setFlippedCards] = useState([]);
+
+  const [disabled, setDisabled] = useState(false);
 
   const cardCompare = () => {
     if (choice1?.value === choice2?.value) {

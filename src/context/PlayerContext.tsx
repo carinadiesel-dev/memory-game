@@ -21,7 +21,7 @@ type PlayersDataContext = {
 // ContextProps = {
 //   playersData: {player1:PLayerDataType, player2: PlayerDataType},
 //   setPlayersData: (data:PlayerDataType) => void;
-//   }
+//
 
 export const PlayersDataContext = createContext<PlayersDataContext | null>(
   null

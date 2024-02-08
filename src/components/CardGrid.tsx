@@ -1,9 +1,10 @@
 import { Grid } from "@mui/material";
-import CardBackImg from "../assets/cards/card-back.png";
-import { CARDS } from "../common/constants";
+import { SHUFFLEDCARDS } from "../common/constants";
+import { useClickedCardsContext } from "../context/ClickedCardContext";
 import { CardFrame } from "./CardFrame";
 
 export const CardGrid = () => {
+  const { handleChoice, flippedCards } = useClickedCardsContext();
   return (
     <Grid
       container
@@ -20,15 +21,23 @@ export const CardGrid = () => {
       alignItems={"center"}
       justifyContent={"center"}
     >
-      {CARDS.map((card) => (
+      {SHUFFLEDCARDS.map((shuffledCard: any) => (
         <Grid
           item
           xs={1}
           display="flex"
           justifyContent="center"
           alignItems="center"
+          key={shuffledCard.id}
         >
-          <CardFrame cardImg={CardBackImg} key={card.id} />
+          <CardFrame
+            cardImg={shuffledCard.image}
+            handleClick={() => handleChoice(shuffledCard)}
+            isFlipped={
+              flippedCards[0] === shuffledCard ||
+              flippedCards[1] === shuffledCard
+            }
+          />
         </Grid>
       ))}
     </Grid>

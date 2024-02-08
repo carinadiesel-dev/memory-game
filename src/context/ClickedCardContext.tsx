@@ -17,6 +17,8 @@ type ClickedCardsContextData = {
   activePlayer: string;
   setActivePlayer: any;
   cardCompare: any;
+  flippedCards: any;
+  setFlippedCards: any;
 };
 
 const ClickedCardsContext = createContext<ClickedCardsContextData>({
@@ -28,6 +30,8 @@ const ClickedCardsContext = createContext<ClickedCardsContextData>({
   activePlayer: "Player1",
   setActivePlayer: () => {},
   cardCompare: () => {},
+  flippedCards: [],
+  setFlippedCards: () => {},
 });
 
 interface ClickedCardsDataProviderProps {
@@ -48,28 +52,33 @@ export function ClickedCardsDataProvider({
 
   const [activePlayer, setActivePlayer] = useState("Player1");
 
+  const [flippedCards, setFlippedCards] = useState([]);
+
   const cardCompare = () => {
     if (choice1?.value === choice2?.value) {
-      console.log("Match");
       if (activePlayer === "Player1") {
         playersData.player1.score = player1Score + 2;
       } else if (activePlayer === "Player2") {
         playersData.player2.score = player2Score + 2;
       }
     } else {
-      console.log("No Match");
+      setTimeout(() => {
+        setFlippedCards([]);
+      }, 1000);
     }
+
     setChoice1(null);
     setChoice2(null);
     setActivePlayer(activePlayer === "Player1" ? "Player2" : "Player1");
   };
 
   const handleChoice = (card: CardData) => {
-    choice1 ? setChoice2(card) : setChoice1(card);
     if (!choice1) {
       setChoice1(card);
+      setFlippedCards((prevFlippedCards) => [...prevFlippedCards, card]);
     } else if (choice1 && !choice2) {
       setChoice2(card);
+      setFlippedCards((prevFlippedCards) => [...prevFlippedCards, card]);
       cardCompare();
     }
   };
@@ -83,10 +92,9 @@ export function ClickedCardsDataProvider({
     activePlayer,
     setActivePlayer,
     cardCompare,
+    flippedCards,
+    setFlippedCards,
   };
-
-  console.log(value);
-  console.log(activePlayer);
 
   return (
     <ClickedCardsContext.Provider value={value}>

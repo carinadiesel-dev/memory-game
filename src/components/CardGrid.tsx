@@ -4,7 +4,21 @@ import { useClickedCardsContext } from "../context/ClickedCardContext";
 import { CardFrame } from "./CardFrame";
 
 export const CardGrid = () => {
-  const { handleChoice } = useClickedCardsContext();
+  const { handleChoice, setActivePlayer, flippedCards, choice1, choice2 } =
+    useClickedCardsContext();
+
+  // const [flippedCards, setFlippedCards] = useState<any[]>([]);
+
+  //   setFlippedCards((prev: any[]) => [...prev, card]);
+
+  //   if (flippedCards.length === 2) {
+  //     // Check if the two cards match
+  //     // If they don't, flip them back over after a delay
+  //     setTimeout(() => {
+  //       setFlippedCards([]);
+  //     }, 1000);
+  //   }
+  // };
   return (
     <Grid
       container
@@ -30,9 +44,13 @@ export const CardGrid = () => {
           alignItems="center"
         >
           <CardFrame
-            cardImg={shuffledCard.img}
+            cardImg={shuffledCard.image}
             key={shuffledCard.id}
             handleClick={() => handleChoice(shuffledCard)}
+            isFlipped={
+              flippedCards[0] === shuffledCard ||
+              flippedCards[1] === shuffledCard
+            }
           />
         </Grid>
       ))}
